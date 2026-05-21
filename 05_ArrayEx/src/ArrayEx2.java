@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ArrayEx2 {
   public static void main(String[] args) {
@@ -61,6 +60,14 @@ public class ArrayEx2 {
     // System.out.println("Enter a word: ");
     // String word = scanner.next();
     // char[] wordList = new char[word.length()];
+    char[] uppers = new char[26];
+    char[] lowers = new char[26];
+    for (int i = 0; i < 26; i++) {
+      uppers[i] = (char) ('A' + i); // ASCII: 'A': 65 ... 'Z': 90, 'a': 97 ... 'z': 122
+      lowers[i] = (char) (uppers[i] + 32);
+    }
+    System.out.println(Arrays.toString(uppers));
+    System.out.println(Arrays.toString(lowers));
    
     // 7. 10진수(number)를 2진수로 변환한 결과를 int[] binary에 저장하세요.
 
