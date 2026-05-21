@@ -6,11 +6,11 @@ public class Book {
   private int price;
   private boolean isBorrowed;
   
-  public Book(String title, String author, int price, boolean isBorrowed) {
+  public Book(String title, String author, int price) {
     this.title = title;
     this.author = author;
     this.price = price;
-    this.isBorrowed = isBorrowed;
+    this.isBorrowed = false; // default값: false
   }
 
   public String getTitle() {
@@ -45,23 +45,29 @@ public class Book {
     this.isBorrowed = isBorrowed;
   }
 
-  void borrow() {
-    if (!isBorrowed) {
-      System.out.println("[" + title + "]을(를) 대출했습니다.");
-      setBorrowed(true);
-    } else {
+  public void borrow() {
+    if (isBorrowed) {
       System.out.println("[" + title + "]은(는) 이미 대출 중입니다.");
-      setBorrowed(false);
+    } else {
+      setBorrowed(true);
+      System.out.println("[" + title + "]을(를) 대출했습니다.");
     }
   }
 
-  void returnBook() {
-    System.out.println("[" + title + "]을(를) 반납했습니다.");
-    setBorrowed(false);
+  public void returnBook() {
+    if (!isBorrowed) {
+      System.out.println("[" + title + "]은(는) 대출 중이 아닙니다.");
+    } else {
+      setBorrowed(false);
+      System.out.println("[" + title + "]을(를) 반납했습니다.");
+    }
   }
 
   void display() {
-    System.out.println("=== 도서 목록 ===");
-    
+    System.out.println("제목: " + title);
+    System.out.println("저자: " + author);
+    System.out.println("가격: " + price);
+    System.out.println("대출 상태: " + (isBorrowed ? "대출 중" : "대출 가능"));
+    System.out.println("------------------");
   }
 }

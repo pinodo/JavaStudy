@@ -45,11 +45,11 @@ public class Student {
     this.science = science;
   }
 
-  double getAverage() {
+  public double getAverage() {
     return (double) (math + english + science) / 3;
   }
 
-  char getGrade() {
+  public char getGrade() {
     double avg = getAverage();
     if (avg >= 90) {
       return 'A';
@@ -72,7 +72,7 @@ public class Student {
     // }
   }
 
-  void display() {
+  public void display() {
     System.out.println("Info: " + name);
   }
 }
