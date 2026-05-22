@@ -5,15 +5,16 @@ public class Carrier {
   private Cup[] cups;
   private int idx = 0;
 
-  // public void addCup(Cup cup) {
-  //   if (idx == cups.length - 1) {
-  //     return;
-  //   }
-  //   cups[idx] = cup;
-  // }
+  public void addCup(Cup cup) {
+    if (idx != cups.length) {
+      cups[idx++] = cup;
+    } else {
+      System.out.println("컵이 꽉 찼습니다.");
+      return;
+    }
+  }
   
-
   public void info() {
-
+    
   }
 }
