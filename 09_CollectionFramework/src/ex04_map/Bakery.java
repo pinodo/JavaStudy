@@ -44,13 +44,51 @@ public class Bakery {
    * @param money 고객이 낸 돈
    * @param count 고객이 사려는 빵의 갯수
    * @return 판매할 빵의 갯수와 잔돈
-   * @throws InsufficientPayAmountException
-   * @throws InsufficientBreadException
+   * @throws InsufficientPayAmountException // 고객이 빵가격보다 적은 돈을 지불
+   * @throws InsufficientBreadException // 판매할 빵의 갯수 부족
    */
   public Map<String, Integer> sell(int money, int count) {
-    Map<String, Integer> remains = new HashMap<>();
+    Map<String, Integer> remains = null;
 
+    try {
+
+      if (this.breadCount < count) { // 빵이 부족한 경우
+        throw new InsufficientBreadException("빵이 없습니다.");
+      }
+
+      if (money < price * count) { // 고객이 낸 돈이 부족한 경우
+        throw new InsufficientPayAmountException("돈 더 주세요.");
+      }
+
+      this.breadCount -= count; // 빵집에 빵 갯수 - 고객이 산 빵 갯수
+      this.money += count * price; // 자본금 = 기존 자본금 + 고객이 산 빵 금액(갯수 * 가격)
+
+      remains = Map.of("count", count, "change", money - count * price); // Immutable, 남은 빵 갯수, 잔돈 반환
+
+    } catch (InsufficientBreadException e) {
+      e.getMessage();
+    } catch (InsufficientPayAmountException e) {
+      e.getMessage();
+    }
     return remains;
+
+    // TRY_3
+    // try {
+    //   if (breadCount < count) {
+    //     throw new InsufficientBreadException("빵이 없습니다.");
+    //   }
+    //   if (price > money) {
+    //     throw new InsufficientPayAmountException("돈 더 주세요.");
+    //   }
+    //   this.money += price * count;
+    //   this.breadCount -= count;
+    //   remains = Map.of("count", count, "money", money - count * price);
+    // } catch (InsufficientBreadException e) {
+    //   e.getMessage();
+    // } catch (InsufficientPayAmountException e) {
+    //   e.getMessage();
+    // }
+    // return remains;
 
     // TRY_2
     // try {
@@ -70,7 +108,6 @@ public class Bakery {
     // } catch (InsufficientPayAmountException e) {
     //   System.err.println(e.getMessage());
     // }
-
     // return remains;
 
     // TRY_1
