@@ -4,7 +4,9 @@ public class Cup {
 
   private Coffee coffee;
   
-  public Cup() {}
+  public Cup(Coffee coffee) {
+    this.coffee = coffee;
+  }
 
   public Coffee getCoffee() {
     return coffee;

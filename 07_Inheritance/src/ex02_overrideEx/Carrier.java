@@ -2,12 +2,12 @@ package ex02_overrideEx;
 
 public class Carrier {
   
-  private Cup[] cups;
+  private Cup[] cups = new Cup[4];
   private int idx = 0;
 
-  public void addCup(Cup cup) {
+  public void addCup(Coffee cup) {
     if (idx != cups.length) {
-      cups[idx++] = cup;
+      cups[idx++] = new Cup(cup);
     } else {
       System.out.println("컵이 꽉 찼습니다.");
       return;
@@ -15,6 +15,8 @@ public class Carrier {
   }
   
   public void info() {
-    
+    for (Cup cup : cups) {
+      System.out.println(cup);
+    }
   }
 }

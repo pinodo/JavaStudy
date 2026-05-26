@@ -1,0 +1,23 @@
+package ex04_map;
+
+public class BakeryMain {
+
+  public static void main(String[] args) {
+    
+    Customer customer = new Customer(0, 10000);
+  
+    Bakery bakery1 = new Bakery(100, 1000, 10000);
+    Bakery bakery2 = new Bakery(50, 3000, 10000);
+
+    customer.buy(bakery1, 3, 10000);
+    customer.buy(bakery2, 3, 7000);
+    customer.buy(bakery2, 2, 10000);
+    customer.buy(bakery2, 2, 7000);
+
+    System.out.println(bakery1.getBreadCount() + ", " + bakery1.getMoney());
+    System.out.println(bakery2.getBreadCount() + ", " + bakery2.getMoney());
+    System.out.println(customer.getBuyBread() + ", " + customer.getMoney());
+  }
+
+
+}
