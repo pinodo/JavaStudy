@@ -1,0 +1,34 @@
+package ex03_input;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+
+public class Main {
+  public static void main(String[] args) {
+    
+    // File 객체 (우리가 읽으려는 대상)
+    File dir = new File("/Users/alvinkim/dev2/JavaStudy/storage");
+    File file = new File(dir, "test.txt");
+
+    // 파일로 데이터를 읽는 스트림: 통로 (입력 스트림)
+    // try with resource -> fos.close()가 구문이 끝날 때 자동 실행
+    try(BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file))) {
+
+      // 어떤 단위로 읽을 것인지 결정 (int, byte[])
+      byte[] b = new byte[4];
+
+      // 실제로 읽은 바이트 수
+      int readByte = 0;
+
+      // 파일이 끝날 때까지 읽기 (파일이 끝나면 -1 반환)
+      while ((readByte = bis.read(b)) != -1) {
+        // 실제로 읽은 바이트 수 만큼 처리
+        System.out.println(new String(b, 0, readByte));
+      }
+
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+    }
+  }
+}
