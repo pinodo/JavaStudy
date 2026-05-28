@@ -45,12 +45,11 @@ public class Customer {
 
       if (bakery != null) {
         change = bakery.sell(money, count);
-        this.buyBread += count;
-        this.money -= bakery.getPrice() * count;
       }
       
       if (change != null) {
-        System.out.println(change.values());
+        this.buyBread += change.get("count");
+        this.money -= (money - change.get("change"));
       }
 
     } catch (InsufficientBudgetException e) {
