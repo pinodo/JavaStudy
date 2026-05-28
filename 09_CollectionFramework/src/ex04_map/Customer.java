@@ -39,7 +39,6 @@ public class Customer {
   public void buy(Bakery bakery, int count, int money) {
 
     try {
-
       if (this.money < money) { // 낼 돈이 부족한 경우
         throw new InsufficientBudgetException("내가 가진 돈이 부족합니다.(" + (money - this.money) + "원 부족)");
       }
