@@ -14,6 +14,7 @@ public class Main {
       new Article("날씨", 500)
     );
 
+    // 조회수가 300 이상인 기사 제목 추출
     List<String> titles = articles.stream()
       .filter(article -> article.getViewCount() >= 300)
       .map(article -> article.getTitle())
@@ -21,6 +22,7 @@ public class Main {
 
     System.out.println(titles);
 
+    // 전체 기사 조회수 추출
     int totalViewCount = articles.stream()
       .mapToInt(Article::getViewCount)
       .sum();

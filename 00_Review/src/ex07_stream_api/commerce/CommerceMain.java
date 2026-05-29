@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 public class CommerceMain {
   public static void main(String[] args) {
     List<Product> products = Product.getSamples();
+    List<Employee> employees = Employee.getSamples();    
+    List<Order> orders = Order.getSamples();    
 
     // Product
     // 1. 카테고리별 그룹핑
@@ -41,6 +43,14 @@ public class CommerceMain {
 
     // Employee
     // 1. 부서별 평균 연봉
+    // 현재 부서별 총 금액만 나옴
+    Map<String, Integer> averageSalaries = employees.stream()
+      .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingInt(Employee::getSalary)));
+    averageSalaries.forEach((key, value) -> {
+      System.out.println("[" + key + "]: " + String.format("%,d", value));
+    });
+    
+
 
     // 2. 시니어만 필터
 
