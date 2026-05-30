@@ -34,4 +34,10 @@ public class Employee {
             new Employee(8L, "윤아름", "개발", 3200000, 1, "junior")
         );
     }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", department=" + department + ", salary=" + salary
+                + ", experienceYears=" + experienceYears + ", grade=" + grade + "]";
+    }
 }
