@@ -35,4 +35,10 @@ public class Order {
             new Order(8L, "박민준", "취소", 3000, LocalDate.of(2024, 1, 9), List.of("사과"))
         );
     }
+
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", customerName=" + customerName + ", status=" + status + ", totalAmount="
+                + totalAmount + ", orderDate=" + orderDate + ", items=" + items + "]";
+    }
 }
