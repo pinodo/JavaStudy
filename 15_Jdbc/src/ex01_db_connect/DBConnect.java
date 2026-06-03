@@ -24,7 +24,7 @@ public class DBConnect {
     Connection conn = DriverManager.getConnection(
       "jdbc:mysql://127.0.0.1:3306/company_db?serverTimezone=UTC&characterEncoding=UTF-8", 
       "root", 
-      "tlrdlf125");
+      "1234");
 
     // 커넥션 반환
     return conn;
